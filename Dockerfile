@@ -7,11 +7,11 @@ COPY package.json package-lock.json* ./
 RUN npm ci
 
 # Copy source and configurations
-COPY src /app
+COPY * /app
+
 # Build the Next.js app
 RUN npm install
 RUN npm run build
-#RUN npm run build || (echo "Build failed!" && cat .next/trace && exit 1)
 
 # 2. Run in minimal production stage
 FROM node:18-alpine AS runner
