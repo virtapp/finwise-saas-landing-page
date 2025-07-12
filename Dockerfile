@@ -8,7 +8,6 @@ RUN npm ci
 
 # Copy source and configurations
 COPY . .
-#COPY * /app
 
 # Build the Next.js app
 RUN npm install
