@@ -7,7 +7,8 @@ COPY package.json package-lock.json* ./
 RUN npm ci
 
 # Copy source and configurations
-COPY * /app
+COPY . .
+#COPY * /app
 
 # Build the Next.js app
 RUN npm install
