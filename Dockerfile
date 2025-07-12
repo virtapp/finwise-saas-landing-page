@@ -1,5 +1,5 @@
 # 1. Install dependencies in a builder stage
-FROM node:22-alpine AS builder
+FROM node:18-alpine AS builder
 WORKDIR /app
 
 # Copy package files
@@ -9,7 +9,8 @@ RUN npm ci
 # Copy source and configurations
 COPY src /app
 # Build the Next.js app
-RUN npm run build
+#RUN npm run build
+RUN npm run build || (echo "Build failed!" && cat .next/trace && exit 1)
 
 # 2. Run in minimal production stage
 FROM node:18-alpine AS runner
