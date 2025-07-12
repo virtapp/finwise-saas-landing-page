@@ -20,10 +20,4 @@ export const testimonials: ITestimonial[] = [
         message: `${siteDetails.siteName} is revolutionizing personal finance management. Its intuitive design and powerful features make it an indispensable tool for anyone serious about financial growth.`,
         avatar: '/images/testimonial-3.webp',
     },
-    {
-        name: 'Yevgeni Shapiro',
-        role: 'Director of Infstructure',
-        message: `${siteDetails.siteName} Its intuitive design and powerful AI features make it an indispensable tool for anyone.`,
-        avatar: '/images/testimonial-3.webp',
-    },
 ];
