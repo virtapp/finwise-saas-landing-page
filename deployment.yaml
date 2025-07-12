@@ -1,0 +1,45 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: finwise-app
+  labels:
+    app: finwise
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: finwise
+  template:
+    metadata:
+      labels:
+        app: finwise
+    spec:
+      containers:
+        - name: finwise-container
+          image: virtapp/finwise-landing:latest
+          ports:
+            - containerPort: 3000
+          env:
+            - name: NODE_ENV
+              value: production
+          resources:
+            limits:
+              memory: "256Mi"
+              cpu: "250m"
+
+---
+
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: finwise-service
+spec:
+  selector:
+    app: finwise
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 3000
+  type: ClusterIP
